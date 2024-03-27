@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List Rendering</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Your ItemList component code will go here
+    let obj = ["Mango","Apple","Orange"];// Array of Strings
+    function ItemList(items){
+        //Conditional Checking for empty objects.
+        if(obj.length == 0){
+            return <div>No items found</div>
+        }
+        //Map every element in the list
+        let fruits = obj.map((ele) => <li>{ele}</li>)
+        return (<ul>
+            {fruits}
+            </ul>);
+            //Framing the list items in the unordered list.
+
+    }
+
+
+    let root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<ItemList/>)
+  </script>
+</body>
+</html>

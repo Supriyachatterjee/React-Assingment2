@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List Rendering</title>
+  <style>
+    /* Using grid to display the element in row wise */
+    .Parent{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Your ItemList component code will go here
+    // Parent Component
+    function Gallery({children}){
+        return (<div className="Parent" >{children}</div>);
+    }
+    //To add img tag
+    function Image(props){
+        return <img src = {props.src} style={{height:"300px",width:"350px",border:"1px solid black",margin:"5px"}}/>
+    }
+    // Grand parent component
+    function App(){
+        return (<Gallery>
+        <Image src="https://cdn.britannica.com/25/222725-050-170F622A/Indian-cricketer-Mahendra-Singh-Dhoni-2011.jpg"/>
+        <Image src="https://www.hindustantimes.com/static-content/1y/cricket-logos/players/virat-kohli.png"/>
+        <Image src="https://akm-img-a-in.tosshub.com/indiatoday/images/media_bank/202308/rohit-sharma-071855-1x1.jpg?VersionId=raXx8EcB89UNSSeInVcKxSaKgHbk8cXQ"/>
+        <Image src="https://img.jagranjosh.com/imported/images/E/GK/sachin-records.png"/>
+    </Gallery>);
+    }
+    let root = ReactDOM.createRoot(document.getElementById("root"));// Get the root element from the body
+    root.render(<App/>)//Rendering the element
+  </script>
+</body>
+</html>
